@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const path = require('path');
 const { Pool, Client } = require('pg');
 
 // Constants
@@ -9,7 +10,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-    res.send('Hello World App');
+    res.send('Hello World App 2');
 });
 
 const client = new Client({
@@ -21,10 +22,10 @@ const client = new Client({
 });
 
 client.connect()
-client.query('SELECT NOW()', (err, res) => {
+/*client.query('SELECT NOW()', (err, res) => {
     console.log("Error or response :: ", err, res)
     client.end()
-});
+});*/
 
 app.listen(PORT, HOST);
 console.log('Running on http://${HOST}:${PORT}');

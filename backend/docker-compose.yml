@@ -12,11 +12,9 @@ services:
       PORT: 3000
     ports:
       - "3000:3000"
-    command: npm run dev && ./node_modules/.bin/sequelize db:migrate
     volumes:
       - .:/app/
       - /app/node_modules
-  
   postgres:
     image: postgres:15
     ports:
@@ -25,3 +23,18 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: db
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+volumes:
+  local_pgdata:
+  pgadmin-data:

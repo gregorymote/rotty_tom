@@ -1,5 +1,5 @@
 CREATE TABLE "Member" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "user_id" integer,
   "game_id" integer,
   "name" varchar,
@@ -9,13 +9,13 @@ CREATE TABLE "Member" (
 );
 
 CREATE TABLE "User" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "session_id" varchar,
   "created_at" timestamp
 );
 
 CREATE TABLE "Game" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "name" varchar,
   "member_id" integer,
   "type" varchar,
@@ -24,7 +24,7 @@ CREATE TABLE "Game" (
 );
 
 CREATE TABLE "Round" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "category" varchar,
   "game_id" integer,
   "member_id" integer,
@@ -32,7 +32,7 @@ CREATE TABLE "Round" (
 );
 
 CREATE TABLE "Subject" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "name" varchar,
   "score" integer,
   "artwork" varchar,
@@ -42,7 +42,7 @@ CREATE TABLE "Subject" (
 );
 
 CREATE TABLE "Guess" (
-  "id" integer PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "title" varchar,
   "delta" integer,
   "value" integer,
@@ -51,7 +51,7 @@ CREATE TABLE "Guess" (
   "created_at" timestamp
 );
 
-ALTER TABLE "Member" ADD FOREIGN KEY ("id") REFERENCES "Game" ("member_id");
+ALTER TABLE "Game" ADD FOREIGN KEY ("member_id") REFERENCES "Member" ("id");
 
 ALTER TABLE "Member" ADD FOREIGN KEY ("user_id") REFERENCES "User" ("id");
 

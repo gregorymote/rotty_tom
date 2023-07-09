@@ -1,5 +1,9 @@
 'use strict';
 
+const fs = require("fs");
+const path = require("path");
+const readFile = require("util").promisify(fs.readFile);
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -14,6 +18,7 @@ module.exports = {
         __dirname,
         "../queries/create-tables.sql"
       );
+      console.log(queryPath);
       const query = await readFile(queryPath, "utf8");
       return await queryInterface.sequelize.query(query);
     } catch (err) {
@@ -31,6 +36,7 @@ module.exports = {
      */
     try {
       const queryPath = path.resolve(__dirname, "../queries/drop-tables.sql");
+      console.log(queryPath);
       const query = await readFile(queryPath, "utf8");
       return await queryInterface.sequelize.query(query);
     } catch (err) {
