@@ -40,4 +40,12 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+
+db.user = require('./User.js')(sequelize,Sequelize);
+db.game = require('./Game.js')(sequelize,Sequelize);
+db.round = require('./Round.js')(sequelize,Sequelize);
+db.subject = require('./Subject.js')(sequelize,Sequelize);
+db.guess = require('./Guess.js')(sequelize,Sequelize);
+db.member = require('./Member.js')(sequelize,Sequelize);
+
 module.exports = db;

@@ -5,13 +5,15 @@ CREATE TABLE "Member" (
   "name" varchar,
   "score" integer,
   "rank" integer,
-  "created_at" timestamp
+  "createdAt" timestamp,
+  "updatedAt" timestamp
 );
 
 CREATE TABLE "User" (
   "id" SERIAL PRIMARY KEY,
   "session_id" varchar,
-  "created_at" timestamp
+  "createdAt" timestamp,
+  "updatedAt" timestamp
 );
 
 CREATE TABLE "Game" (
@@ -20,7 +22,8 @@ CREATE TABLE "Game" (
   "member_id" integer,
   "type" varchar,
   "num_subjects" integer,
-  "created_at" timestamp
+  "createdAt" timestamp,
+  "updatedAt" timestamp
 );
 
 CREATE TABLE "Round" (
@@ -28,7 +31,8 @@ CREATE TABLE "Round" (
   "category" varchar,
   "game_id" integer,
   "member_id" integer,
-  "created_at" timestamp
+  "createdAt" timestamp,
+  "updatedAt" timestamp
 );
 
 CREATE TABLE "Subject" (
@@ -38,7 +42,8 @@ CREATE TABLE "Subject" (
   "artwork" varchar,
   "description" varchar,
   "round_id" integer,
-  "created_at" timestamp
+  "createdAt" timestamp,
+  "updatedAt" timestamp
 );
 
 CREATE TABLE "Guess" (
@@ -48,7 +53,8 @@ CREATE TABLE "Guess" (
   "value" integer,
   "member_id" integer,
   "subject_id" integer,
-  "created_at" timestamp
+  "createdAt" timestamp,
+  "updatedAt" timestamp
 );
 
 ALTER TABLE "Game" ADD FOREIGN KEY ("member_id") REFERENCES "Member" ("id");

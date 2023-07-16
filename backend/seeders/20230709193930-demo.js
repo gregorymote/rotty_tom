@@ -13,8 +13,7 @@ module.exports = {
      * }], {});
     */
     return queryInterface.bulkInsert('User', [{
-      session_id: '5555555555555',
-      created_at: new Date()
+      session_id: '5555555555555'
     }]);
   },
 
